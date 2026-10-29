@@ -47,3 +47,16 @@ def test_incident_includes_customer_impact_summary():
     assert "5" in incident["impact_summary"]
     assert "8.95%" in incident["impact_summary"]
     assert "not been independently verified" in incident["impact_summary"]
+
+
+def test_event_equal_to_threshold_does_not_trigger_incident():
+    events = [
+        event
+        for event in generate_events()
+        if event["metric"] == "error_rate"
+    ]
+
+    threshold = events[0]["value"]
+    events = [events[0]]
+
+    assert detect_incidents(events, error_rate_threshold=threshold) == []
