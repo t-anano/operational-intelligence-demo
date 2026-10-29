@@ -1,4 +1,4 @@
-# \# Operational Intelligence Demo
+## Operational Intelligence Demo
 
 # 
 
@@ -6,13 +6,13 @@
 
 # 
 
-# \*\*Live demo:\*\* https://t-anano-operational-intelligence-demo-app-crkdfp.streamlit.app/  
+# **Live demo:** https://t-anano-operational-intelligence-demo-app-crkdfp.streamlit.app/  
 
-# \*\*Source code:\*\* https://github.com/t-anano/operational-intelligence-demo
+# **Source code:** https://github.com/t-anano/operational-intelligence-demo
 
 # 
 
-# \## Problem
+## Problem
 
 # 
 
@@ -20,43 +20,43 @@
 
 # 
 
-# \## Current capabilities
+## Current capabilities
 
 # 
 
-# \- Generate repeatable simulated telemetry events.
+# - Generate repeatable simulated telemetry events.
 
-# \- Validate event records, including required fields, timestamps, numeric values, and severity.
+# - Validate event records, including required fields, timestamps, numeric values, and severity.
 
-# \- Detect error-rate events that exceed a configurable threshold.
+# - Detect error-rate events that exceed a configurable threshold.
 
-# \- Group elevated events into an incident summary.
+# - Group elevated events into an incident summary.
 
-# \- Report affected-event count, peak error rate, incident time window, and supporting evidence.
+# - Report affected-event count, peak error rate, incident time window, and supporting evidence.
 
-# \- Recommend an initial investigation step.
+# - Recommend an initial investigation step.
 
-# \- Display telemetry and incident summaries in an interactive Streamlit dashboard.
+# - Display telemetry and incident summaries in an interactive Streamlit dashboard.
 
-# \- Test event validation and incident detection with pytest.
-
-# 
-
-# \## Technology
+# - Test event validation and incident detection with pytest.
 
 # 
 
-# \- Python
-
-# \- Streamlit
-
-# \- pytest
-
-# \- Structured event data
+## Technology
 
 # 
 
-# \## Run locally
+# - Python
+
+# - Streamlit
+
+# - pytest
+
+# - Structured event data
+
+# 
+
+## Run locally
 
 # 
 
@@ -124,7 +124,7 @@
 
 # 
 
-# \## Demonstration scenario
+## Demonstration scenario
 
 # 
 
@@ -140,35 +140,35 @@
 
 # 
 
-# \- All telemetry is simulated and deterministic.
+# - All telemetry is simulated and deterministic.
 
-# \- The prototype is not connected to production systems or live monitoring infrastructure.
+# - The prototype is not connected to production systems or live monitoring infrastructure.
 
-# \- Detection uses a configurable error-rate threshold; it does not establish root cause.
+# - Detection uses a configurable error-rate threshold; it does not establish root cause.
 
-# \- Recommended actions are investigative suggestions, not verified diagnoses or automated remediation.
-
-# 
-
-# \## Future improvements
+# - Recommended actions are investigative suggestions, not verified diagnoses or automated remediation.
 
 # 
 
-# \- Add visual trend comparisons between baseline and elevated telemetry.
-
-# \- Expand incident grouping and severity prioritization.
-
-# \- Add tests for invalid thresholds and additional event edge cases.
-
-# \- Record a short walkthrough showing the dashboard and its incident-triage workflow.
+## Future improvements
 
 # 
 
-# \## Project status
+# - Add visual trend comparisons between baseline and elevated telemetry.
+
+# - Expand incident grouping and severity prioritization.
+
+# - Add tests for invalid thresholds and additional event edge cases.
+
+# - Record a short walkthrough showing the dashboard and its incident-triage workflow.
 
 # 
 
-# \*\*Working prototype.\*\* The dashboard is deployed, the core detection workflow is implemented, and the current automated test suite passes.
+## Project status
+
+# 
+
+# **Working prototype.** The dashboard is deployed, the core detection workflow is implemented, and the current automated test suite passes.
 
 # 
 
