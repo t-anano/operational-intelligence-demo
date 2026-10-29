@@ -1,45 +1,174 @@
-# Operational Intelligence Demo
+# \# Operational Intelligence Demo
 
-## Purpose
+# 
 
-A Python-based operational intelligence prototype that turns simulated operational events into prioritized incidents and actionable recommendations.
+# A Python and Streamlit prototype that transforms simulated operational telemetry into explainable incidents and recommended investigative actions.
 
-The goal is to demonstrate how an engineer can transform raw data into a workflow that helps an operator identify, investigate, and respond to problems.
+# 
 
-## Problem
+# \*\*Live demo:\*\* https://t-anano-operational-intelligence-demo-app-crkdfp.streamlit.app/  
 
-Operational teams can receive more telemetry and alerts than they can efficiently investigate. Important signals may be buried among routine events, making prioritization and diagnosis harder.
+# \*\*Source code:\*\* https://github.com/t-anano/operational-intelligence-demo
 
-## Planned capabilities
+# 
 
-- Ingest structured, simulated operational events.
-- Validate incoming records and handle malformed data.
-- Detect unusual behavior using transparent, explainable rules.
-- Rank incidents by severity and operational impact.
-- Present supporting evidence and a recommended next investigative step.
-- Log decisions and errors for debugging and review.
-- Include automated tests and reproducible demo scenarios.
+# \## Problem
 
-## Initial technology
+# 
 
-- Python
-- pandas
-- pytest
-- Streamlit for a lightweight operator interface, if useful
+# Operational teams need to distinguish meaningful service degradation from routine telemetry. This prototype demonstrates a simple, transparent workflow for identifying elevated error rates, presenting supporting evidence, and guiding an operator toward an initial investigation.
 
-## Success criteria
+# 
 
-- A new user can run the demo using documented instructions.
-- Example events produce repeatable, explainable incident classifications.
-- Invalid input is handled gracefully.
-- Each incident includes evidence supporting its priority.
-- Automated tests cover core classification and error-handling behavior.
-- A short screen-recorded demonstration shows the workflow from event ingestion to operator decision.
+# \## Current capabilities
 
-## Project status
+# 
 
-**Planning stage.** The capabilities above are planned, not yet implemented. The system will use simulated data and is not intended for production incident response.
+# \- Generate repeatable simulated telemetry events.
 
-## Future demonstration
+# \- Validate event records, including required fields, timestamps, numeric values, and severity.
 
-The finished demo will show incoming events, highlight an emerging issue, explain why it was prioritized, and guide an operator toward the next investigative action.
+# \- Detect error-rate events that exceed a configurable threshold.
+
+# \- Group elevated events into an incident summary.
+
+# \- Report affected-event count, peak error rate, incident time window, and supporting evidence.
+
+# \- Recommend an initial investigation step.
+
+# \- Display telemetry and incident summaries in an interactive Streamlit dashboard.
+
+# \- Test event validation and incident detection with pytest.
+
+# 
+
+# \## Technology
+
+# 
+
+# \- Python
+
+# \- Streamlit
+
+# \- pytest
+
+# \- Structured event data
+
+# 
+
+# \## Run locally
+
+# 
+
+# Clone the repository and navigate to the project directory:
+
+# 
+
+# ```bash
+
+# git clone https://github.com/t-anano/operational-intelligence-demo.git
+
+# cd operational-intelligence-demo
+
+# ```
+
+# 
+
+# Create and activate a virtual environment, then install the project dependencies listed in `requirements.txt`:
+
+# 
+
+# ```bash
+
+# python -m venv .venv
+
+# ```
+
+# 
+
+# Windows PowerShell:
+
+# 
+
+# ```powershell
+
+# .\\.venv\\Scripts\\Activate.ps1
+
+# pip install -r requirements.txt
+
+# ```
+
+# 
+
+# Run the automated tests:
+
+# 
+
+# ```bash
+
+# python -m pytest -q
+
+# ```
+
+# 
+
+# Launch the dashboard:
+
+# 
+
+# ```bash
+
+# streamlit run app.py
+
+# ```
+
+# 
+
+# \## Demonstration scenario
+
+# 
+
+# The included simulated dataset contains a checkout API error-rate spike. At the default 5.0% threshold, the detector identifies five elevated events and reports a peak error rate of 8.95%.
+
+# 
+
+# The dashboard lets the user adjust the threshold to explore how alert sensitivity affects incident detection.
+
+# 
+
+# \## Limitations
+
+# 
+
+# \- All telemetry is simulated and deterministic.
+
+# \- The prototype is not connected to production systems or live monitoring infrastructure.
+
+# \- Detection uses a configurable error-rate threshold; it does not establish root cause.
+
+# \- Recommended actions are investigative suggestions, not verified diagnoses or automated remediation.
+
+# 
+
+# \## Future improvements
+
+# 
+
+# \- Add visual trend comparisons between baseline and elevated telemetry.
+
+# \- Expand incident grouping and severity prioritization.
+
+# \- Add tests for invalid thresholds and additional event edge cases.
+
+# \- Record a short walkthrough showing the dashboard and its incident-triage workflow.
+
+# 
+
+# \## Project status
+
+# 
+
+# \*\*Working prototype.\*\* The dashboard is deployed, the core detection workflow is implemented, and the current automated test suite passes.
+
+# 
+
