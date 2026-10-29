@@ -50,6 +50,23 @@ st.dataframe(
     use_container_width=True,
 )
 
+st.subheader("Operational summary")
+
+if incidents:
+    incident = incidents[0]
+    st.write(
+        f"The {incident['service']} service recorded "
+        f"{incident['affected_event_count']} elevated error-rate events. "
+        f"The peak error rate was "
+        f"{incident['peak_value_percent']:.2f}%, exceeding the "
+        f"{incident['threshold_percent']:.1f}% alert threshold."
+    )
+else:
+    st.write(
+        "No events exceeded the selected error-rate threshold. "
+        "Continue monitoring for changes."
+    )
+
 st.subheader("Incident triage")
 
 if incidents:
