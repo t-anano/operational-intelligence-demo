@@ -41,7 +41,9 @@ def detect_incidents(
             f"Peak observed error rate: {peak_event['value']}%",
         ],
         "recommended_action": (
-            "Inspect checkout API logs and recent deployments; "
+            "Inspect checkout API logs and recent deployments; verify whether "
+"the elevated error rate correlates with a recent release or "
+"dependency failure.; "
             "verify whether the elevated error rate is ongoing."
         ),
     }]
