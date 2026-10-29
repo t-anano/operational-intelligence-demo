@@ -123,6 +123,14 @@ if incidents:
 
         st.write("**Recommended investigation**")
         st.write(incident["recommended_action"])
+
+        st.write("**Initial response plan**")
+        st.write(
+            "1. Review checkout API logs during the incident window.\n"
+            "2. Check recent deployments and dependency health.\n"
+            "3. Compare the observed error rate with the configured threshold.\n"
+            "4. Reassess severity after gathering evidence; do not assume root cause."
+        )
 else:
     st.success("No incidents detected at the selected threshold.")
 
