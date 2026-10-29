@@ -36,3 +36,14 @@ def test_rejects_invalid_event():
 
     with pytest.raises(ValueError, match="finite"):
         detect_incidents(events)
+def test_incident_includes_customer_impact_summary():
+    incidents = detect_incidents(generate_events(), error_rate_threshold=5.0)
+
+    assert len(incidents) == 1
+
+    incident = incidents[0]
+
+    assert "impact_summary" in incident
+    assert "5" in incident["impact_summary"]
+    assert "8.95%" in incident["impact_summary"]
+    assert "not been independently verified" in incident["impact_summary"]
