@@ -33,17 +33,18 @@ def detect_incidents(
         "threshold_percent": error_rate_threshold,
         "affected_event_count": len(elevated),
         "peak_value_percent": peak_event["value"],
-        "first_seen": min(e["timestamp"] for e in elevated),
-        "last_seen": max(e["timestamp"] for e in elevated),
+        "first_seen": min(event["timestamp"] for event in elevated),
+        "last_seen": max(event["timestamp"] for event in elevated),
         "evidence": [
-            f"{len(elevated)} events exceeded the "
-            f"{error_rate_threshold}% error-rate threshold",
+            (
+                f"{len(elevated)} events exceeded the "
+                f"{error_rate_threshold}% error-rate threshold"
+            ),
             f"Peak observed error rate: {peak_event['value']}%",
         ],
         "recommended_action": (
-            "Inspect checkout API logs and recent deployments; verify whether "
-"the elevated error rate correlates with a recent release or "
-"dependency failure.; "
-            "verify whether the elevated error rate is ongoing."
+            "Inspect checkout API logs and recent deployments; verify "
+            "whether the elevated error rate correlates with a recent "
+            "release or dependency failure."
         ),
     }]
