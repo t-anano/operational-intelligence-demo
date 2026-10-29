@@ -60,3 +60,6 @@ def test_event_equal_to_threshold_does_not_trigger_incident():
     events = [events[0]]
 
     assert detect_incidents(events, error_rate_threshold=threshold) == []
+
+def test_empty_event_list_returns_no_incidents():
+    assert detect_incidents([]) == []
