@@ -1,5 +1,6 @@
 
 import streamlit as st
+import pandas as pd
 
 from src.detect_incidents import detect_incidents
 from src.generate_events import generate_events
@@ -49,6 +50,32 @@ st.dataframe(
     ],
     use_container_width=True,
 )
+
+st.subheader("Error rate over time")
+
+chart_data = [
+    {
+        "Time": event["timestamp"],
+        "Error rate (%)": event["value"],
+        "Alert threshold (%)": threshold,
+    }
+    for event in events
+    if event["metric"] == "error_rate"
+]
+
+if chart_data:
+    chart_df = pd.DataFrame(chart_data).sort_values("Time")
+    st.line_chart(
+    chart_df,
+    x="Time",
+    y=["Error rate (%)", "Alert threshold (%)"],
+)
+    st.caption(
+        f"The selected alert threshold is {threshold:.1f}%. "
+        "Use the telemetry table below to inspect individual events."
+    )
+
+
 
 st.subheader("Operational summary")
 
