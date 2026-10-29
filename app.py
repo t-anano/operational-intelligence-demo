@@ -81,6 +81,8 @@ st.subheader("Operational summary")
 
 if incidents:
     incident = incidents[0]
+    st.write("**Customer impact assessment**")
+    st.write(incident["impact_summary"])
     st.write(
         f"The {incident['service']} service recorded "
         f"{incident['affected_event_count']} elevated error-rate events. "

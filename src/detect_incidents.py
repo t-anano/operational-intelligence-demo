@@ -33,6 +33,13 @@ def detect_incidents(
         "threshold_percent": error_rate_threshold,
         "affected_event_count": len(elevated),
         "peak_value_percent": peak_event["value"],
+        "impact_summary": (
+    f"The {peak_event['service']} service experienced "
+    f"{len(elevated)} error-rate events above the configured "
+    f"{error_rate_threshold}% threshold. The peak observed "
+    f"error rate was {peak_event['value']}%. Customer impact "
+    "has not been independently verified."
+),
         "first_seen": min(event["timestamp"] for event in elevated),
         "last_seen": max(event["timestamp"] for event in elevated),
         "evidence": [
