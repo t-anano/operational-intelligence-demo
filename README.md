@@ -10,6 +10,18 @@ A Python and Streamlit prototype that transforms simulated operational telemetry
 
 Operational teams need to distinguish meaningful service degradation from routine telemetry. This prototype demonstrates a simple, transparent workflow for identifying elevated error rates, presenting supporting evidence, and guiding an operator toward an initial investigation.
 
+
+## Dashboard Preview
+
+### Operational Command Center
+
+![Operational Intelligence Command Center](assets/command-center.png)
+
+### Incident Investigation
+
+![Incident Investigation Workspace](assets/incident-investigation.png)
+
+
 ## Current Capabilities
 
 - Generate repeatable simulated telemetry events.
