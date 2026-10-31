@@ -1,15 +1,12 @@
-# Operational Intelligence Demo
+# ◈ Operational Intelligence Demo
 
-A Python and Streamlit prototype that transforms simulated operational telemetry into explainable incidents and recommended investigative actions.
+**An operational monitoring and incident triage prototype built with Python and Streamlit.**
 
-**Live Demo:** [Operational Intelligence Dashboard](https://t-anano-operational-intelligence-demo-app-crkdfp.streamlit.app/)
+Operational Intelligence transforms simulated telemetry into explainable incidents, supporting evidence, and recommended investigative actions through an interactive command-center dashboard.
 
-**Source Code:** [GitHub Repository](https://github.com/t-anano/operational-intelligence-demo)
+[**Live Dashboard**](https://t-anano-operational-intelligence-demo-app-crkdfp.streamlit.app/) · [**GitHub Repository**](https://github.com/t-anano/operational-intelligence-demo)
 
-## Problem
-
-Operational teams need to distinguish meaningful service degradation from routine telemetry. This prototype demonstrates a simple, transparent workflow for identifying elevated error rates, presenting supporting evidence, and guiding an operator toward an initial investigation.
-
+---
 
 ## Dashboard Preview
 
@@ -21,26 +18,71 @@ Operational teams need to distinguish meaningful service degradation from routin
 
 ![Incident Investigation Workspace](assets/incident-investigation.png)
 
+---
+
+## Problem
+
+Operational teams must distinguish meaningful service degradation from routine system activity. Identifying abnormal behavior is only the first step; teams also need supporting evidence and a structured starting point for investigation.
+
+This project demonstrates a simplified operational intelligence workflow that processes telemetry, detects elevated error rates, groups observations into incidents, and presents actionable investigative context.
+
+## Solution
+
+Operational Intelligence provides a centralized interface for:
+
+- Monitoring simulated service telemetry.
+- Configuring error-rate detection thresholds.
+- Identifying elevated error-rate events.
+- Grouping observations into incident summaries.
+- Examining supporting evidence and incident time windows.
+- Reviewing recommended investigation steps.
+
+The goal is to make operational signals easier to interpret and act upon—not to automate decisions without evidence.
 
 ## Current Capabilities
 
-- Generate repeatable simulated telemetry events.
-- Validate event records, including required fields, timestamps, numeric values, and severity.
-- Detect error-rate events that exceed a configurable threshold.
-- Group elevated events into an incident summary.
-- Report affected-event count, peak error rate, incident time window, and supporting evidence.
-- Recommend an initial investigation step.
-- Display telemetry and incident summaries in an interactive Streamlit dashboard.
-- Test event validation and incident detection with pytest.
+| Capability | Description |
+|---|---|
+| Telemetry generation | Generates repeatable simulated operational events. |
+| Schema validation | Validates required fields, ISO 8601 timestamps, numeric values, and severity. |
+| Threshold-based detection | Identifies error-rate observations exceeding a configurable threshold. |
+| Incident grouping | Groups elevated observations into an incident summary. |
+| Evidence reporting | Displays affected-event counts, peak error rates, time windows, and supporting evidence. |
+| Investigation guidance | Recommends initial investigative actions. |
+| Interactive dashboard | Presents operational metrics, telemetry trends, and incident information. |
+| Automated testing | Uses pytest to test event validation and incident detection. |
 
 ## Technology Stack
 
-- **Python** — event processing and incident detection
-- **Streamlit** — interactive dashboard
-- **pytest** — automated testing
-- **Structured event data** — simulated telemetry input
+- **Python** — telemetry processing and incident detection.
+- **Streamlit** — interactive command-center interface.
+- **Pandas** — tabular data processing and visualization preparation.
+- **pytest** — automated testing.
+- **Structured event data** — simulated telemetry input.
+
+## Demonstration Scenario
+
+The included deterministic dataset contains an elevated checkout API error rate.
+
+At the default **5.0% alert threshold**, the detector identifies five elevated events and reports a peak observed error rate of **8.95%**.
+
+Operators can adjust the threshold through the dashboard and observe how detection sensitivity changes.
+
+This demonstrates a basic operational workflow:
+
+1. Generate telemetry.
+2. Validate incoming event records.
+3. Evaluate observations against a configurable threshold.
+4. Group elevated observations into an incident.
+5. Present evidence and investigative recommendations.
 
 ## Run Locally
+
+### Prerequisites
+
+- Python 3.10 or later recommended.
+- Git.
+- pip.
 
 ### 1. Clone the repository
 
@@ -55,12 +97,18 @@ cd operational-intelligence-demo
 python -m venv .venv
 ```
 
-### 3. Activate the virtual environment
+### 3. Activate the environment
 
-On Windows PowerShell:
+**Windows PowerShell:**
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
+```
+
+**macOS / Linux:**
+
+```bash
+source .venv/bin/activate
 ```
 
 ### 4. Install dependencies
@@ -69,7 +117,7 @@ On Windows PowerShell:
 pip install -r requirements.txt
 ```
 
-### 5. Run the automated tests
+### 5. Run automated tests
 
 ```bash
 python -m pytest -q
@@ -78,31 +126,54 @@ python -m pytest -q
 ### 6. Launch the dashboard
 
 ```bash
-streamlit run app.py
+python -m streamlit run app.py
 ```
 
-Streamlit will provide a local URL where you can interact with the dashboard.
+Streamlit will provide a local URL for interacting with the application.
 
-## Demonstration Scenario
+## Engineering Design Considerations
 
-The included simulated dataset contains an elevated checkout API error rate. At the default **5.0% threshold**, the detector identifies five elevated events and reports a peak error rate of **8.95%**.
+**Input validation**
 
-The interactive dashboard allows users to adjust the threshold and observe how alert sensitivity affects incident detection.
+Telemetry events are validated before incident detection. Timestamp validation requires timezone-aware ISO 8601 strings, while numeric values must be finite.
+
+**Explainability**
+
+Incident summaries expose the observations behind a detection, including event counts, peak values, and configured thresholds.
+
+**Human oversight**
+
+Recommended actions are investigative suggestions. The application does not independently establish root cause, verify customer impact, or execute remediation.
+
+**Testability**
+
+The detection and validation logic are separated into Python modules, allowing core behavior to be tested independently of the dashboard.
 
 ## Limitations
 
-- All telemetry is simulated and deterministic.
-- The prototype is not connected to production systems or live monitoring infrastructure.
-- Detection uses a configurable error-rate threshold and does not establish root cause.
-- Recommended actions are investigative suggestions, not verified diagnoses or automated remediation.
+- Telemetry is simulated and deterministic.
+- The application is not connected to production infrastructure or live monitoring systems.
+- Detection currently relies on a configurable error-rate threshold.
+- Incident grouping does not independently establish causal relationships.
+- Customer impact is not independently verified.
+- Recommended actions are not automated remediation.
 
-## Future Improvements
+## Roadmap
 
-- Add visual trend comparisons between baseline and elevated telemetry.
-- Expand incident grouping and severity prioritization.
-- Add tests for invalid thresholds and additional event edge cases.
-- Record a short walkthrough demonstrating the workflow from telemetry input to incident triage.
+- [ ] Distinguish transient threshold crossings from sustained degradation.
+- [ ] Introduce evidence-based incident severity prioritization.
+- [ ] Add incident timelines and trend analysis.
+- [ ] Improve incident selection and service-level filtering.
+- [ ] Expand automated tests for edge cases and detection behavior.
+- [ ] Add structured application logging.
+- [ ] Record a short end-to-end product demonstration.
 
 ## Project Status
 
-**Working prototype.** The dashboard is deployed, the core detection workflow is implemented, and the current automated test suite passes.
+**Working prototype — deployed and tested.**
+
+The application is deployed, its core telemetry validation and incident detection workflow is implemented, and the current automated test suite passes.
+
+---
+
+*Built as a demonstration of operational monitoring, explainable incident detection, and evidence-driven investigation.*
